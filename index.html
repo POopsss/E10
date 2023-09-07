@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Resume</title>
+    <meta charset="UTF-8" />
+    <style>
+    
+      @import url("https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,700;1,400&display=swap");
+
+      .border {
+        border-style: solid;
+        border-width: 0.3vh 0.3vw;
+      }
+      
+      .centered {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+      }
+      
+      body {
+        font-family: "Vollkorn", serif;
+        font-style: bold;
+        margin-top: 2vh;
+        margin-bottom: 0vh;
+        color: #ada666;
+        background: #202020;
+        font-size: 25px;
+        text-shadow: 2px 1px black;
+      }
+      
+      h1 {
+        margin: 0px;
+        font-size: 2em;
+        margin: auto;
+      }
+      
+      h2 {
+        font-size: 1.5em;
+        margin: 0.5em;
+      }
+      
+      h3 {
+        font-size: 1.1em;
+      }
+      
+      p {
+        display: block;
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+      }
+      
+      .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .main-grid {
+        display: grid;
+        grid-template-columns: minmax(0px, 1fr) minmax(600px, 1200px) minmax(0px, 1fr);
+        grid-template-rows: 100px minmax(0px) 100px;
+      }
+      
+      .main-header {
+        display: flex;
+        grid-area: 1 / 2 / 2 / 3;
+        color: #ada666;
+      }
+      
+      .main-content {
+        grid-column: 2;
+        grid-row: 2;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 2vh;
+      }
+      
+      .main-content p {
+        padding: 10px;
+      }
+      
+      .main-footer {
+        grid-area: 3 / 1 / 3 / 4;
+        padding: 2% 16%;
+        text-align: center;
+        font-size: 0.6em;
+      }
+      
+      .middle-background {
+        grid-area: 2 / 1 / 2 / 4;
+        background: linear-gradient(#202020, #aa1111, #202020);
+        z-index: -1;
+      }
+      
+      .navigation {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        z-index: 1000;
+      }
+      
+      .info {
+        display: flex;
+        flex-direction: row;
+        font-size: 0.9em;
+      }
+      
+      .info-left {
+        text-indent: 1ch;
+      }
+      
+      .infobox img {
+        width: 480px;
+      }
+      
+      .additional-info {
+        text-indent: 1ch;
+      }
+      
+      .infobox p {
+        margin: 0.4em 0em;
+        border-style: solid;
+        border-width: 0.1vh 0;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+      }
+      
+      .project-container {
+        width: 470px;
+        height: 4.2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      
+      .project-content {
+        width: 450px;
+        height: 4em;
+        display: grid;
+        grid-template-columns: 3.6em 1fr;
+        grid-template-rows: 3em 1em 0px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        margin: 8px;
+        cursor: pointer;
+      }
+      
+      .project-about {
+        font-size: 0.9em;
+        grid-column: 1/3;
+        grid-row: 3;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      
+      .project-content:hover {
+        border-style: solid;
+        border-width: 0.1em;
+      }
+      
+      .project-data {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        padding-right: 8%;
+        grid-column: 2;
+        grid-row: 2;
+        font-size: 0.7em;
+      }
+      
+      .project-img {
+        grid-column: 1;
+        grid-row: 1/3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+      }
+      
+      .project-img img {
+        width: 120%;
+        height: 110%;
+        border-radius: 5px;
+      }
+      
+      .project-img img:hover {
+        border-style: solid;
+        border-width: 0.1em;
+      }
+      
+      .portfolio-box {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+      
+      .portfolio-title {
+        border-style: solid;
+        border-width: 0.3vh 0;
+        margin: 15px 0px;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .project-title {
+        width: 94%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        grid-column: 2;
+        grid-row: 1;
+        padding-left: 4%;
+      }
+      
+      .project-title h3 {
+        margin-left: 4px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      
+      h4 {
+        padding: 10px;
+        margin: 10px 10px 4px;
+      }
+      
+      ul {
+        margin-top: 8px;
+      }
+      
+      li {
+        padding-bottom: 8px;
+      }
+      
+      @media screen and (max-width: 1440px) {
+        .infobox img {
+          width: 380px;
+        }
+      
+        body {
+          font-size: 28px;
+        }
+      }
+
+      </style>
+  </head>
+
+  <body>
+    <div class="main-grid">
+      <div class="main-header border">
+        <div class="logo border">
+          <svg
+            version="1.0"
+            xmlns="http://www.w3.org/2000/svg"
+            width="72.000000pt"
+            height="72.000000pt"
+            viewBox="0 0 72.000000 72.000000"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <g
+              transform="translate(0.000000,72.000000) scale(0.100000,-0.100000)"
+              fill="#ada666"
+              stroke="none"
+            >
+              <path
+                d="M223 575 c16 -51 27 -67 48 -75 15 -7 35 -20 45 -31 24 -27 83 -10
+           84 24 0 5 -7 1 -16 -7 -18 -19 -55 -21 -72 -4 -7 7 -12 29 -12 49 0 33 -5 41
+           -49 72 l-49 35 21 -63z"
+              />
+              <path
+                d="M467 598 c-43 -28 -47 -34 -42 -59 4 -18 1 -41 -9 -59 -22 -45 -5
+           -80 40 -80 43 0 72 37 54 70 -7 14 -19 20 -33 18 -27 -4 -36 -38 -10 -38 15 0
+           15 2 3 10 -8 5 -11 12 -7 16 12 12 30 -13 23 -31 -3 -10 -15 -15 -28 -13 -43
+           6 -31 78 12 78 12 0 21 16 33 57 8 32 15 59 13 60 -1 1 -23 -12 -49 -29z"
+              />
+              <path
+                d="M331 566 c-18 -22 -10 -70 13 -74 25 -5 44 14 28 30 -9 9 -12 8 -12
+           -7 0 -14 -3 -16 -11 -8 -15 15 -4 43 15 43 8 0 22 -10 31 -22 l17 -23 -7 25
+           c-14 50 -49 66 -74 36z"
+              />
+              <path
+                d="M218 479 c-21 -12 -24 -49 -6 -67 16 -16 43 -15 57 2 10 12 8 13 -9
+           9 -24 -6 -41 12 -33 34 3 7 16 13 29 13 33 0 53 -42 33 -66 -13 -16 -12 -16 9
+           -5 12 6 22 18 22 26 0 14 -38 55 -51 55 -4 0 -13 2 -21 5 -7 2 -21 0 -30 -6z"
+              />
+              <path
+                d="M344 426 c-9 -24 4 -48 23 -44 12 2 18 12 18 28 0 29 -32 41 -41 16z"
+              />
+              <path
+                d="M506 395 c-11 -8 -37 -15 -57 -15 -21 0 -44 -3 -53 -6 -21 -8 -21
+           -58 0 -78 32 -32 90 -10 82 31 -4 23 -48 31 -48 9 0 -9 5 -16 10 -16 6 0 10 5
+           10 10 0 6 5 10 10 10 13 0 13 -27 0 -35 -6 -3 -19 -3 -31 0 -15 5 -19 14 -17
+           33 2 21 9 28 31 30 17 2 36 -3 47 -13 13 -12 33 -15 81 -13 l64 3 -51 33 c-58
+           37 -53 36 -78 17z"
+              />
+              <path
+                d="M145 364 l-40 -34 61 0 c55 0 64 3 78 25 16 24 16 25 -4 25 -12 0
+           -29 4 -38 9 -13 7 -27 0 -57 -25z"
+              />
+              <path
+                d="M281 364 c-53 -44 -29 -105 29 -74 23 12 27 50 5 50 -8 0 -15 -4 -15
+           -10 0 -5 5 -10 11 -10 5 0 8 -4 4 -10 -10 -16 -36 2 -33 24 4 24 33 33 53 16
+           18 -15 20 -51 4 -67 -8 -8 -6 -26 7 -67 10 -31 20 -53 23 -50 3 3 13 26 22 51
+           15 45 14 47 -8 69 -13 13 -23 34 -23 47 0 15 -10 31 -24 41 -24 15 -26 14 -55
+           -10z"
+              />
+            </g>
+          </svg>
+        </div>
+        <div class="navigation border">
+          <h1 class="test">Щербаков Павел</h1>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="info">
+          <div class="info-left">
+            <p>
+              Цель: Высоко мотивированный младший Full Stack разработчик с
+              прочным фундаментом в веб-разработке и страстью к созданию
+              инновационных и удобных для пользователя приложений. Ищу
+              интересную роль, позволяющую делиться техническими знаниями,
+              сотрудничать с командой и продолжать учиться и расти в быстро
+              меняющейся среде.
+            </p>
+            <h4>Навыки:</h4>
+            <ul type="circle" title="Навыки">
+              <li>
+                Языки программирования: JavaScript, HTML5, CSS3, Python;
+              </li>
+              <li>
+                Фронтенд-разработка: XHR, Fetch, WebSockets, Bootstrap;
+              </li>
+              <li>
+                Бэкенд-разработка: Django, Celery, Redis, APScheduler, Requests,
+                API Bot;
+              </li>
+              <li>База данных: SQL, Rabbit MQ, PostgreSQL;</li>
+              <li>Контроль версий: Git, GitHub;</li>
+              <li>
+                Тестирование и отладка: Jest, Chrome DevTools, Unittest;
+              </li>
+              <li>Сильные навыки решения проблем и аналитические навыки.</li>
+            </ul>
+          </div>
+          <div class="infobox border">
+            <img
+              src="https://i.ibb.co/9tsYc4j/photo1693999319.jpg"
+              alt="Фото"
+            />
+            <p>Имя: Щербаков Павел</p>
+            <p>
+              Образование: Бакалавр. Информационные системы и технологии. МФПУ
+              Синергия 2023г.
+            </p>
+            <p>
+              <img
+                src="https://i.ibb.co/ZMhjjW5/icons8-yandex-mail-25.png"
+                alt="mail-icon"
+                style="width: 23px;"
+              />
+              @mail: BarsikSpam@yandex.ru
+            </p>
+            <p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                x="0px"
+                y="0px"
+                width="23"
+                height="23"
+                viewBox="0 0 48 48"
+              >
+                <path
+                  fill="#29b6f6"
+                  d="M24 4A20 20 0 1 0 24 44A20 20 0 1 0 24 4Z"
+                ></path>
+                <path
+                  fill="#fff"
+                  d="M33.95,15l-3.746,19.126c0,0-0.161,0.874-1.245,0.874c-0.576,0-0.873-0.274-0.873-0.274l-8.114-6.733 l-3.97-2.001l-5.095-1.355c0,0-0.907-0.262-0.907-1.012c0-0.625,0.933-0.923,0.933-0.923l21.316-8.468 c-0.001-0.001,0.651-0.235,1.126-0.234C33.667,14,34,14.125,34,14.5C34,14.75,33.95,15,33.95,15z"
+                ></path>
+                <path
+                  fill="#b0bec5"
+                  d="M23,30.505l-3.426,3.374c0,0-0.149,0.115-0.348,0.12c-0.069,0.002-0.143-0.009-0.219-0.043 l0.964-5.965L23,30.505z"
+                ></path>
+                <path
+                  fill="#cfd8dc"
+                  d="M29.897,18.196c-0.169-0.22-0.481-0.26-0.701-0.093L16,26c0,0,2.106,5.892,2.427,6.912 c0.322,1.021,0.58,1.045,0.58,1.045l0.964-5.965l9.832-9.096C30.023,18.729,30.064,18.416,29.897,18.196z"
+                ></path>
+              </svg>
+              Telegram: @pavel_barsik
+            </p>
+          </div>
+        </div>
+        <div class="additional-info"><p></p></div>
+        <div class="portfolio">
+          <div class="portfolio-title"><h2>Портфолио</h2></div>
+          <div class="portfolio-box">
+            <div class="project-container">
+              <div class="project-content">
+                <div class="project-img">
+                  <img
+                    src="https://i.ibb.co/7WXdKPy/Screenshot-from-2023-09-05-10-27-02.png"
+                    alt=""
+                    onclick="location.href='https://github.com/POopsss/Forum'"
+                  />
+                </div>
+                <div class="project-title">
+                  <h3>
+                    Проект на Django «Доска объявлений»
+                  </h3>
+                </div>
+                <div class="project-data">21.04.2023</div>
+                <div class="project-about">
+                  <p>
+                    Итоговый проект "Бэкенд-разработка на Python и Django".
+                    Проект реализовывает backend сайта/форума для создания
+                    заявок и откликов пользователей.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="project-container">
+              <div class="project-content">
+                <div class="project-img">
+                  <img
+                    src="https://i.ibb.co/WyvG8H1/Screenshot-from-2023-09-05-14-16-34.png"
+                    alt=""
+                    onclick="window.open('https://github.com/POopsss/C5.6', '_blank').focus()"
+                  />
+                </div>
+                <div class="project-title"><h3>Telegram Bot</h3></div>
+                <div class="project-data"><p>11.11.2022</p></div>
+                <div class="project-about">
+                  <p>
+                    Телеграм бот для конвертации валют при помощи внешнего API
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="project-container">
+              <div class="project-content">
+                <div class="project-img">
+                  <img
+                    src="https://i.ibb.co/yXsby7j/Screenshot-from-2023-09-05-14-33-45.png"
+                    alt=""
+                    onclick="window.open('https://github.com/POopsss/Python-OOP', '_blank').focus()"
+                  />
+                </div>
+
+                <div class="project-title"><h3>OOP Python</h3></div>
+                <div class="project-data"><p>28.10.2022</p></div>
+                <div class="project-about">
+                  <p>Разработка игр "Крестики нолики" и "Морской бой"</p>
+                </div>
+              </div>
+            </div>
+            <div class="project-container">
+              <div class="project-content">
+                <div class="project-img"></div>
+                <div class="project-title"></div>
+                <div class="project-data"></div>
+                <div class="project-about">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Consectetur, rerum quae. Eveniet nihil ab maiores optio enim
+                  recusandae quisquam, cupiditate exercitationem non quidem
+                  nobis porro iure possimus quaerat? Ullam, eius? Lorem ipsum
+                  dolor, sit amet consectetur adipisicing elit. Veritatis
+                  consequatur impedit saepe incidunt consequuntur similique, eum
+                  quibusdam commodi voluptas eveniet aliquam vitae libero qui
+                  dicta! Iste exercitationem voluptas pariatur voluptatum.
+                </div>
+              </div>
+            </div>
+            <div class="project-container">
+              <div class="project-content">
+                <div class="project-img"></div>
+                <div class="project-title"></div>
+                <div class="project-data"></div>
+                <div class="project-about">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/Kj1wiegcpqk?si=yWcleEp620YpwrCJ"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+            <div class="project-container">
+              <div class="project-content">
+                <div class="project-img"></div>
+                <div class="project-title"></div>
+                <div class="project-data"></div>
+                <div class="project-about">
+                  <p>
+                    В дверь постучали 1024 раза. "Килобит" подумал
+                    Программист.<br />
+                    "<img
+                      src="https://vremenynet.ru/miniimg_2496.png"
+                      alt=""
+                      style="width: 88px;"
+                    />" подумали 128 осьминогов.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-footer border">
+        <p>
+          <img
+            src="https://i.ibb.co/ZMhjjW5/icons8-yandex-mail-25.png"
+            alt="mail-icon"
+            style="width: 16px;"
+          />
+          @mail: BarsikSpam@yandex.ru
+        </p>
+        <p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="16"
+            height="16"
+            viewBox="0 0 48 48"
+          >
+            <path
+              fill="#29b6f6"
+              d="M24 4A20 20 0 1 0 24 44A20 20 0 1 0 24 4Z"
+            ></path>
+            <path
+              fill="#fff"
+              d="M33.95,15l-3.746,19.126c0,0-0.161,0.874-1.245,0.874c-0.576,0-0.873-0.274-0.873-0.274l-8.114-6.733 l-3.97-2.001l-5.095-1.355c0,0-0.907-0.262-0.907-1.012c0-0.625,0.933-0.923,0.933-0.923l21.316-8.468 c-0.001-0.001,0.651-0.235,1.126-0.234C33.667,14,34,14.125,34,14.5C34,14.75,33.95,15,33.95,15z"
+            ></path>
+            <path
+              fill="#b0bec5"
+              d="M23,30.505l-3.426,3.374c0,0-0.149,0.115-0.348,0.12c-0.069,0.002-0.143-0.009-0.219-0.043 l0.964-5.965L23,30.505z"
+            ></path>
+            <path
+              fill="#cfd8dc"
+              d="M29.897,18.196c-0.169-0.22-0.481-0.26-0.701-0.093L16,26c0,0,2.106,5.892,2.427,6.912 c0.322,1.021,0.58,1.045,0.58,1.045l0.964-5.965l9.832-9.096C30.023,18.729,30.064,18.416,29.897,18.196z"
+            ></path>
+          </svg>
+          Telegram: @pavel_barsik
+        </p>
+      </div>
+      <div class="middle-background"></div>
+    </div>
+
+    <script>
+    
+      const gitTitle = document.getElementsByClassName('project-title')
+
+        for (const title of gitTitle) {
+        
+          title.parentNode.addEventListener('mouseover', () =>{
+            title.parentNode.style.border = '0.1em solid';
+          })
+        
+          title.parentNode.addEventListener("mouseout", () =>{
+            if (title.parentNode.style.height === '4em' || title.parentNode.style.height === '') {
+              title.parentNode.style.border = 'none';
+            }
+          })
+        
+          title.addEventListener('click', () => {
+            const content = title.parentNode;
+        
+            if (content.style.height === '11.5em') {
+              content.childNodes[5].style.borderBottom = 'none';
+              
+              let height = 7.5
+              const close = setInterval(function() {
+                height = height - 0.1
+                content.style.height = `${height + 4}em`;
+                content.parentNode.style.height = `${height + 4.2}em`
+                content.style.gridTemplateRows = `3em 1em ${height}em`;
+                if (height < 0.1) clearInterval(close);
+              }, 3.9);
+            } else {
+              content.style.border = 'solid 0.1em';
+              content.childNodes[5].style.borderBottom = '0.1em solid';
+        
+              let height = 0
+              const open = setInterval(function() {
+                height = height + 0.1
+                content.style.height = `${height + 4}em`;
+                content.parentNode.style.height = `${height + 4.2}em`
+                content.style.gridTemplateRows = `3em 1em ${height}em`;
+                if (height > 7.4) clearInterval(open);
+              }, 3.9);
+            }
+          })
+        }
+
+    </script>
+  </body>
+</html>
